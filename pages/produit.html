@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche produit — CÉRULEA</title>
+<meta name="description" content="Découvrez le détail de nos formules Cérulea : composition, bénéfices et avis clients.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<style>
+  .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); padding: var(--space-6) 0; }
+  .product-detail-media img { border-radius: var(--radius-lg); aspect-ratio: 1/1; object-fit: cover; }
+  .product-detail-title { font-family: var(--font-display); font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom: var(--space-2); }
+  .product-detail-desc { color: var(--c-text-muted); margin: var(--space-3) 0; }
+  .product-detail-list { margin: var(--space-4) 0; }
+  .product-detail-list li { padding-left: 1.4em; position: relative; margin-bottom: var(--space-2); font-size: 0.92rem; }
+  .product-detail-list li::before { content: "✓"; position: absolute; left: 0; color: var(--c-primary); font-weight: 700; }
+  @media (max-width: 760px) { .product-detail { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<div class="announcement-bar">
+  <div class="announcement-track">
+    <span class="announcement-item">Livraison offerte en point relais dès 40 €</span>
+    <span class="announcement-item">-15% dès 3 produits achetés avec le code MAREE15</span>
+    <span class="announcement-item" aria-hidden="true">Livraison offerte en point relais dès 40 €</span>
+    <span class="announcement-item" aria-hidden="true">-15% dès 3 produits achetés avec le code MAREE15</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <button class="header-burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">Cérulea</span>
+      <span class="logo-baseline">Bien-être marin</span>
+    </a>
+    <div class="header-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" placeholder="Rechercher un produit, un besoin…" aria-label="Rechercher">
+    </div>
+    <nav class="header-actions" aria-label="Compte et panier">
+      <a href="contact.html" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Compte
+      </a>
+      <a href="#" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        Souhaits
+        <span class="header-action-badge" data-wishlist-count>0</span>
+      </a>
+      <a href="#" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Panier
+        <span class="header-action-badge">0</span>
+      </a>
+    </nav>
+  </div>
+  <nav class="main-nav" aria-label="Navigation principale">
+    <div class="container">
+      <ul class="main-nav-list">
+        <li class="main-nav-item"><a href="categorie.html?cat=complements" class="main-nav-link">Nos produits</a></li>
+        <li class="main-nav-item"><a href="categorie.html?cat=offres" class="main-nav-link">Offres</a></li>
+        <li class="main-nav-item"><a href="blog.html" class="main-nav-link">Nos conseils</a></li>
+        <li class="main-nav-item"><a href="contact.html" class="main-nav-link">Qui sommes-nous&nbsp;?</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="contenu">
+  <nav class="breadcrumb container" aria-label="Fil d'ariane">
+    <a href="../index.html">Accueil</a> / <a href="categorie.html?cat=sommeil">Sommeil</a> / <span data-product-name>Produit</span>
+  </nav>
+
+  <div class="container product-detail">
+    <div class="product-detail-media">
+      <img id="product-image" src="https://placehold.co/700x700/EAF3FB/0B4F8A?text=Cerulea" alt="Photo du produit" width="700" height="700">
+    </div>
+    <div>
+      <span class="product-card-category" data-product-cat>Sommeil</span>
+      <h1 class="product-detail-title" data-product-name>Ampoules Sommeil Profond</h1>
+      <div class="product-card-rating"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.5L22 9.3l-5 4.6L18.2 22 12 18.3 5.8 22 7 13.9l-5-4.6 7.1-.8Z"/></svg> 4,8 (126 avis)</div>
+      <div class="product-card-prices" style="margin-top: var(--space-3);">
+        <span class="price-current" style="font-size:1.6rem;" data-product-price>22,90&nbsp;€</span>
+        <span class="price-old" data-product-old-price>26,90&nbsp;€</span>
+      </div>
+      <p class="product-detail-desc">Une formule concentrée en magnésium marin et rhodiola, pensée pour accompagner l'endormissement et la qualité du sommeil profond, sans accoutumance.</p>
+      <ul class="product-detail-list">
+        <li>Magnésium d'origine marine, hautement assimilable</li>
+        <li>Rhodiola et mélisse pour apaiser le système nerveux</li>
+        <li>Sans sucre ajouté, formule végétale</li>
+        <li>Cure conseillée de 20 jours</li>
+      </ul>
+      <div style="display:flex; gap: var(--space-2);">
+        <button class="btn btn--primary">Ajouter au panier</button>
+        <button class="wishlist-btn" style="position:static; background: var(--c-section-accent);" data-product-id="ampoules-sommeil-profond" aria-label="Ajouter à la liste de souhaits" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div>
+      <p class="footer-brand-logo">Cérulea</p>
+      <p class="footer-brand-text">Laboratoire de bien-être d'inspiration marine.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Nos produits</p>
+      <ul>
+        <li><a href="categorie.html?cat=complements">Compléments marins</a></li>
+        <li><a href="categorie.html?cat=infusions">Infusions &amp; tisanes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Services</p>
+      <ul>
+        <li><a href="contact.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">À propos</p>
+      <ul>
+        <li><a href="contact.html">Notre histoire</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Nos marques</p>
+      <ul>
+        <li><a href="#">Thalassa Lab</a></li>
+        <li><a href="#">Nordika</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <div class="footer-legal">
+      <a href="cgv.html">CGV</a>
+      <a href="cgu.html">CGU</a>
+      <a href="cookies.html">Gestion des cookies</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+  <p class="footer-copyright">© <span data-year></span> Cérulea — Tous droits réservés. Site de démonstration, produits fictifs.</p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/wishlist.js"></script>
+<script>
+  const catalog = {
+    "ampoules-sommeil-profond": { name: "Ampoules Sommeil Profond", cat: "Sommeil", price: "22,90 €", old: "26,90 €", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Sommeil+Profond" },
+    "tisane-nuit-calme": { name: "Tisane Nuit Calme", cat: "Sommeil", price: "12,50 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Nuit+Calme" },
+    "duo-sommeil-detente": { name: "Duo Sommeil & Détente", cat: "Sommeil", price: "36,90 €", old: "42,90 €", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Duo+D%C3%A9tente" },
+    "complexe-vitalite-marine": { name: "Complexe Vitalité Marine", cat: "Énergie", price: "24,90 €", old: "28,90 €", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Vitalit%C3%A9+Marine" },
+    "gelules-memoire-claire": { name: "Gélules Mémoire Claire", cat: "Mémoire", price: "19,90 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=M%C3%A9moire+Claire" },
+    "cure-vitalite-30-jours": { name: "Cure Vitalité 30 Jours", cat: "Énergie", price: "44,90 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Cure+30+Jours" },
+    "infusion-digestion-douce": { name: "Infusion Digestion Douce", cat: "Digestion", price: "11,90 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Digestion+Douce" },
+    "concentre-drainage-marin": { name: "Concentré Drainage Marin", cat: "Détox", price: "21,90 €", old: "25,90 €", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Drainage+Marin" },
+    "serum-immunite-boreale": { name: "Sérum Immunité Boréale", cat: "Immunité", price: "23,50 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Immunit%C3%A9+Bor%C3%A9ale" },
+    "duo-immunite-hiver": { name: "Duo Immunité Hiver", cat: "Immunité", price: "39,90 €", old: "46,90 €", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Duo+Immunit%C3%A9" },
+    "fluide-circulation-fraicheur": { name: "Fluide Circulation Fraîcheur", cat: "Circulation", price: "18,90 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Circulation+Fra%C3%AEcheur" },
+    "gelules-articulations-profondeur": { name: "Gélules Articulations Profondeur", cat: "Articulations", price: "26,90 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Articulations" },
+    "baume-articulations-chaleur": { name: "Baume Articulations Chaleur", cat: "Articulations", price: "17,50 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Chaleur+Articulaire" },
+    "huile-peau-eclat-marin": { name: "Huile Peau Éclat Marin", cat: "Peau & beauté", price: "29,90 €", old: "34,90 €", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=%C3%89clat+Marin" },
+    "complexe-peau-hydratation": { name: "Complexe Hydratation Profonde", cat: "Peau & beauté", price: "27,90 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=Hydratation+Profonde" },
+    "sels-bain-detox-minerale": { name: "Sels de Bain Détox Minérale", cat: "Détox", price: "15,90 €", old: "", img: "https://placehold.co/700x700/EAF3FB/0B4F8A?text=D%C3%A9tox+Min%C3%A9rale" }
+  };
+  const id = new URLSearchParams(window.location.search).get("id");
+  const product = catalog[id];
+  if (product) {
+    document.title = product.name + " — CÉRULEA";
+    document.querySelectorAll("[data-product-name]").forEach(el => el.textContent = product.name);
+    document.querySelectorAll("[data-product-cat]").forEach(el => el.textContent = product.cat);
+    document.querySelectorAll("[data-product-price]").forEach(el => el.textContent = product.price);
+    const oldEl = document.querySelector("[data-product-old-price]");
+    if (oldEl) oldEl.textContent = product.old;
+    if (oldEl && !product.old) oldEl.style.display = "none";
+    document.getElementById("product-image").src = product.img;
+    document.querySelector(".wishlist-btn[data-product-id]").setAttribute("data-product-id", id);
+  }
+</script>
+</body>
+</html>

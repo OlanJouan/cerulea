@@ -1,0 +1,74 @@
+/* ==========================================================================
+   CÉRULEA — Variables globales (palette, typo, espacements, ombres)
+   ========================================================================== */
+
+:root {
+  /* --- Neutres --- */
+  --white: #FFFFFF;
+  --gray-50: #F6F9FC;
+  --gray-100: #EDF2F7;
+  --gray-border: #DCE7F0;
+  --text-primary: #14212E;
+  --text-muted: #5B7286;
+
+  /* --- Bleus de marque --- */
+  --blue-950: #062842;
+  --blue-900: #083A66;
+  --blue-700: #0B4F8A;
+  --blue-500: #1B5FA8;
+  --blue-300: #4FA3E3;
+  --blue-100: #EAF3FB;
+  --blue-50: #F4F9FD;
+
+  /* --- Tokens sémantiques --- */
+  --c-bg: var(--white);
+  --c-bg-alt: var(--gray-50);
+  --c-section-accent: var(--blue-100);
+  --c-section-accent-soft: var(--blue-50);
+  --c-primary: var(--blue-700);
+  --c-primary-hover: var(--blue-900);
+  --c-secondary: var(--blue-500);
+  --c-accent: var(--blue-300);
+  --c-text: var(--text-primary);
+  --c-text-muted: var(--text-muted);
+  --c-border: var(--gray-border);
+  --c-white: var(--white);
+  --c-badge-bg: var(--blue-700);
+  --c-badge-text: var(--white);
+  --c-price-strike: var(--text-muted);
+  --c-footer-bg: var(--blue-950);
+  --c-footer-text: var(--blue-100);
+  --c-footer-text-muted: #7FA3C4;
+
+  /* --- Typographie --- */
+  --font-base: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+
+  /* --- Rayons --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* --- Ombres --- */
+  --shadow-sm: 0 1px 3px rgba(11, 79, 138, 0.08);
+  --shadow-md: 0 6px 20px rgba(11, 79, 138, 0.12);
+  --shadow-lg: 0 16px 40px rgba(6, 40, 66, 0.16);
+
+  /* --- Espacements --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+
+  /* --- Conteneur --- */
+  --container-max: 1280px;
+
+  /* --- Transitions --- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+}

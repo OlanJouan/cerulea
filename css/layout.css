@@ -1,0 +1,120 @@
+/* ==========================================================================
+   CÉRULEA — Structures de mise en page réutilisables
+   ========================================================================== */
+
+/* --- Grille de cartes (solutions, blog) --- */
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* --- Piste de carrousel (scroll horizontal natif) --- */
+.carousel {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-secondary) var(--c-bg-alt);
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: var(--blue-300);
+  border-radius: var(--radius-pill);
+}
+
+.carousel-track::-webkit-scrollbar-track {
+  background: var(--c-bg-alt);
+  border-radius: var(--radius-pill);
+}
+
+.carousel-track > * {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
+
+.carousel-nav {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.carousel-nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--c-white);
+  border: 1.5px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.carousel-nav-btn:hover {
+  background: var(--c-section-accent);
+  border-color: var(--c-secondary);
+}
+
+.carousel-nav-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--c-primary);
+}
+
+/* --- Bandes horizontales scrollables (chips besoins) --- */
+.chip-row {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.chip-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.chip-row::-webkit-scrollbar-thumb {
+  background: var(--blue-300);
+  border-radius: var(--radius-pill);
+}
+
+@media (max-width: 1100px) {
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid--6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid--4,
+  .grid--6,
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

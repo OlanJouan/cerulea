@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — CÉRULEA</title>
+<meta name="description" content="Contactez le laboratoire Cérulea : FAQ, formulaire de contact et points de vente.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); padding: var(--space-6) 0; }
+  .contact-form { display: flex; flex-direction: column; gap: var(--space-3); }
+  .contact-form input, .contact-form textarea { padding: 0.8em 1em; border-radius: var(--radius-sm); border: 1.5px solid var(--c-border); }
+  .faq-item { border-bottom: 1px solid var(--c-border); padding: var(--space-3) 0; }
+  .faq-item summary { font-weight: 700; cursor: pointer; }
+  .faq-item p { margin-top: var(--space-2); color: var(--c-text-muted); font-size: 0.9rem; }
+  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<div class="announcement-bar">
+  <div class="announcement-track">
+    <span class="announcement-item">Livraison offerte en point relais dès 40 €</span>
+    <span class="announcement-item" aria-hidden="true">Livraison offerte en point relais dès 40 €</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <button class="header-burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">Cérulea</span>
+      <span class="logo-baseline">Bien-être marin</span>
+    </a>
+    <div class="header-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" placeholder="Rechercher un produit, un besoin…" aria-label="Rechercher">
+    </div>
+    <nav class="header-actions" aria-label="Compte et panier">
+      <a href="contact.html" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Compte
+      </a>
+      <a href="#" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        Souhaits
+        <span class="header-action-badge" data-wishlist-count>0</span>
+      </a>
+      <a href="#" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Panier
+        <span class="header-action-badge">0</span>
+      </a>
+    </nav>
+  </div>
+  <nav class="main-nav" aria-label="Navigation principale">
+    <div class="container">
+      <ul class="main-nav-list">
+        <li class="main-nav-item"><a href="categorie.html?cat=complements" class="main-nav-link">Nos produits</a></li>
+        <li class="main-nav-item"><a href="categorie.html?cat=offres" class="main-nav-link">Offres</a></li>
+        <li class="main-nav-item"><a href="blog.html" class="main-nav-link">Nos conseils</a></li>
+        <li class="main-nav-item"><a href="contact.html" class="main-nav-link">Qui sommes-nous&nbsp;?</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="contenu">
+  <nav class="breadcrumb container" aria-label="Fil d'ariane">
+    <a href="../index.html">Accueil</a> / <span>Qui sommes-nous&nbsp;?</span>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Le laboratoire Cérulea</h1>
+      <p>Une équipe passionnée par les actifs marins, basée sur le littoral atlantique.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title" style="margin-bottom: var(--space-4);">Nous contacter</h2>
+        <form class="contact-form">
+          <label for="c-name" class="visually-hidden">Nom</label>
+          <input id="c-name" type="text" placeholder="Votre nom" required>
+          <label for="c-email" class="visually-hidden">E-mail</label>
+          <input id="c-email" type="email" placeholder="Votre e-mail" required>
+          <label for="c-message" class="visually-hidden">Message</label>
+          <textarea id="c-message" rows="5" placeholder="Votre message" required></textarea>
+          <button type="submit" class="btn btn--primary">Envoyer le message</button>
+          <p class="newsletter-feedback" data-contact-feedback style="color: var(--c-primary);"></p>
+        </form>
+      </div>
+      <div>
+        <h2 class="section-title" style="margin-bottom: var(--space-4);">Questions fréquentes</h2>
+        <details class="faq-item" open>
+          <summary>Quels sont les délais de livraison&nbsp;?</summary>
+          <p>Les commandes sont expédiées sous 48h ouvrées et livrées en 2 à 4 jours selon le point relais choisi.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Puis-je annuler ma commande&nbsp;?</summary>
+          <p>Vous pouvez annuler votre commande tant qu'elle n'a pas été expédiée, depuis votre espace client.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Vos produits sont-ils fabriqués en France&nbsp;?</summary>
+          <p>Oui, l'ensemble de nos gammes sont formulées et conditionnées dans notre laboratoire du littoral atlantique.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Où puis-je trouver un point de vente&nbsp;?</summary>
+          <p>Cérulea est disponible dans une sélection de pharmacies et boutiques bio partenaires. Contactez-nous pour connaître le point de vente le plus proche.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div>
+      <p class="footer-brand-logo">Cérulea</p>
+      <p class="footer-brand-text">Laboratoire de bien-être d'inspiration marine.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Nos produits</p>
+      <ul>
+        <li><a href="categorie.html?cat=complements">Compléments marins</a></li>
+        <li><a href="categorie.html?cat=infusions">Infusions &amp; tisanes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Services</p>
+      <ul>
+        <li><a href="contact.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">À propos</p>
+      <ul>
+        <li><a href="contact.html">Notre histoire</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Nos marques</p>
+      <ul>
+        <li><a href="#">Thalassa Lab</a></li>
+        <li><a href="#">Nordika</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <div class="footer-legal">
+      <a href="cgv.html">CGV</a>
+      <a href="cgu.html">CGU</a>
+      <a href="cookies.html">Gestion des cookies</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+  <p class="footer-copyright">© <span data-year></span> Cérulea — Tous droits réservés. Site de démonstration, produits fictifs.</p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/wishlist.js"></script>
+<script>
+  document.querySelector(".contact-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.querySelector("[data-contact-feedback]").textContent = "Merci, votre message a bien été noté (démo — aucun envoi réel).";
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

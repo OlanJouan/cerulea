@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article — CÉRULEA</title>
+<meta name="description" content="Conseils bien-être Cérulea.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<style>
+  .article-body { max-width: 720px; margin: 0 auto; padding: var(--space-6) var(--space-4); }
+  .article-body img { border-radius: var(--radius-lg); margin-bottom: var(--space-5); aspect-ratio: 16/9; object-fit: cover; }
+  .article-body h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom: var(--space-3); }
+  .article-body p { margin-bottom: var(--space-3); color: var(--c-text); }
+  .article-body h2 { color: var(--c-primary); font-size: 1.15rem; margin: var(--space-5) 0 var(--space-2); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<div class="announcement-bar">
+  <div class="announcement-track">
+    <span class="announcement-item">Livraison offerte en point relais dès 40 €</span>
+    <span class="announcement-item" aria-hidden="true">Livraison offerte en point relais dès 40 €</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <button class="header-burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">Cérulea</span>
+      <span class="logo-baseline">Bien-être marin</span>
+    </a>
+    <div class="header-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" placeholder="Rechercher un produit, un besoin…" aria-label="Rechercher">
+    </div>
+    <nav class="header-actions" aria-label="Compte et panier">
+      <a href="contact.html" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Compte
+      </a>
+      <a href="#" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        Souhaits
+        <span class="header-action-badge" data-wishlist-count>0</span>
+      </a>
+      <a href="#" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Panier
+        <span class="header-action-badge">0</span>
+      </a>
+    </nav>
+  </div>
+  <nav class="main-nav" aria-label="Navigation principale">
+    <div class="container">
+      <ul class="main-nav-list">
+        <li class="main-nav-item"><a href="categorie.html?cat=complements" class="main-nav-link">Nos produits</a></li>
+        <li class="main-nav-item"><a href="categorie.html?cat=offres" class="main-nav-link">Offres</a></li>
+        <li class="main-nav-item"><a href="blog.html" class="main-nav-link">Nos conseils</a></li>
+        <li class="main-nav-item"><a href="contact.html" class="main-nav-link">Qui sommes-nous&nbsp;?</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="contenu">
+  <nav class="breadcrumb container" aria-label="Fil d'ariane">
+    <a href="../index.html">Accueil</a> / <a href="blog.html">Nos conseils</a> / <span data-article-title>Article</span>
+  </nav>
+
+  <article class="article-body">
+    <img id="article-image" src="https://placehold.co/900x500/0B4F8A/FFFFFF?text=Cerulea" alt="" width="900" height="500">
+    <span class="article-card-tag" data-article-tag>Conseil</span>
+    <h1 data-article-title>Titre de l'article</h1>
+    <div data-article-content></div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div>
+      <p class="footer-brand-logo">Cérulea</p>
+      <p class="footer-brand-text">Laboratoire de bien-être d'inspiration marine.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Nos produits</p>
+      <ul>
+        <li><a href="categorie.html?cat=complements">Compléments marins</a></li>
+        <li><a href="categorie.html?cat=infusions">Infusions &amp; tisanes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Services</p>
+      <ul>
+        <li><a href="contact.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">À propos</p>
+      <ul>
+        <li><a href="contact.html">Notre histoire</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Nos marques</p>
+      <ul>
+        <li><a href="#">Thalassa Lab</a></li>
+        <li><a href="#">Nordika</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <div class="footer-legal">
+      <a href="cgv.html">CGV</a>
+      <a href="cgu.html">CGU</a>
+      <a href="cookies.html">Gestion des cookies</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+  <p class="footer-copyright">© <span data-year></span> Cérulea — Tous droits réservés. Site de démonstration, produits fictifs.</p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/wishlist.js"></script>
+<script>
+  const articles = {
+    "magnesium-marin-sommeil": {
+      title: "Pourquoi le magnésium marin aide à mieux dormir",
+      tag: "Sommeil",
+      img: "https://placehold.co/900x500/0B4F8A/FFFFFF?text=Magn%C3%A9sium+Marin",
+      html: "<p>Le magnésium joue un rôle central dans la régulation du système nerveux. Sa forme marine, extraite de l'eau de mer profonde, est reconnue pour sa bonne tolérance digestive.</p><h2>Un minéral clé pour l'endormissement</h2><p>En soirée, un apport en magnésium peut aider à relâcher les tensions musculaires et à préparer le corps au repos.</p><h2>Comment l'intégrer à sa routine</h2><p>Une prise le soir, 30 minutes avant le coucher, associée à une réduction des écrans, constitue une base simple à mettre en place.</p>"
+    },
+    "algues-digestion": {
+      title: "Ce que les algues font vraiment pour votre digestion",
+      tag: "Digestion",
+      img: "https://placehold.co/900x500/1B5FA8/FFFFFF?text=Algues+%26+Digestion",
+      html: "<p>Riches en fibres et en minéraux, certaines algues comme le kombu sont utilisées depuis longtemps pour accompagner le confort digestif.</p><h2>Des fibres qui nourrissent le microbiote</h2><p>Elles favorisent le transit et l'équilibre de la flore intestinale.</p><h2>À quel moment les consommer</h2><p>En infusion après le repas, elles s'intègrent facilement à une routine quotidienne.</p>"
+    },
+    "routine-immunite-hiver": {
+      title: "3 gestes simples pour soutenir son immunité cet hiver",
+      tag: "Immunité",
+      img: "https://placehold.co/900x500/083A66/FFFFFF?text=Routine+Hiver",
+      html: "<p>L'hiver met notre organisme à l'épreuve. Quelques gestes simples permettent de soutenir ses défenses naturelles.</p><h2>1. Miser sur la vitamine C et le zinc marin</h2><p>Ces deux actifs sont régulièrement étudiés pour leur rôle dans le fonctionnement normal du système immunitaire.</p><h2>2. Soigner son sommeil</h2><p>Un sommeil de qualité reste l'un des piliers les plus sous-estimés de l'immunité.</p><h2>3. Bouger, même un peu</h2><p>Une activité physique modérée et régulière est bénéfique tout au long de l'année.</p>"
+    },
+    "circulation-jambes-legeres": {
+      title: "Cinq habitudes simples pour des jambes plus légères",
+      tag: "Circulation",
+      img: "https://placehold.co/900x500/4FA3E3/FFFFFF?text=Jambes+L%C3%A9g%C3%A8res",
+      html: "<p>La sensation de jambes lourdes touche de nombreuses personnes, en particulier en fin de journée.</p><h2>Surélever ses jambes</h2><p>Quelques minutes par jour suffisent à soulager la sensation de lourdeur.</p><h2>S'hydrater suffisamment</h2><p>Une bonne hydratation participe au bon fonctionnement de la circulation.</p>"
+    },
+    "stress-respiration": {
+      title: "Trois exercices de respiration contre le stress du quotidien",
+      tag: "Stress",
+      img: "https://placehold.co/900x500/062842/FFFFFF?text=Stress+%26+Respiration",
+      html: "<p>La respiration est un outil accessible à tout moment pour apaiser le système nerveux.</p><h2>La cohérence cardiaque</h2><p>Six respirations par minute, pendant cinq minutes, trois fois par jour.</p><h2>La respiration abdominale</h2><p>Elle favorise un relâchement profond du diaphragme et des épaules.</p>"
+    },
+    "peau-hydratation-hiver": {
+      title: "Comment préserver l'hydratation de sa peau en hiver",
+      tag: "Peau",
+      img: "https://placehold.co/900x500/1B5FA8/FFFFFF?text=Peau+%26+Hydratation",
+      html: "<p>Le froid et le chauffage assèchent la peau, qui a besoin d'une routine adaptée en hiver.</p><h2>Miser sur les actifs marins</h2><p>Le collagène marin et les oméga-3 participent au maintien du film hydrolipidique.</p><h2>Ne pas négliger l'intérieur</h2><p>Une bonne hydratation générale complète les soins appliqués sur la peau.</p>"
+    }
+  };
+  const slug = new URLSearchParams(window.location.search).get("slug");
+  const article = articles[slug];
+  if (article) {
+    document.title = article.title + " — CÉRULEA";
+    document.querySelectorAll("[data-article-title]").forEach(el => el.textContent = article.title);
+    document.querySelector("[data-article-tag]").textContent = article.tag;
+    document.querySelector("[data-article-content]").innerHTML = article.html;
+    document.getElementById("article-image").src = article.img;
+    document.getElementById("article-image").alt = article.title;
+  }
+</script>
+</body>
+</html>
