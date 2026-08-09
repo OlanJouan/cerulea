@@ -52,11 +52,11 @@
         Souhaits
         <span class="header-action-badge" data-wishlist-count>0</span>
       </a>
-      <a href="#" class="header-action">
+      <button type="button" class="header-action" data-cart-toggle>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         Panier
         <span class="header-action-badge" data-cart-count>0</span>
-      </a>
+      </button>
     </nav>
   </div>
   <nav class="main-nav" aria-label="Navigation principale">
@@ -169,6 +169,23 @@
   </div>
   <p class="footer-copyright">© <span data-year></span> Cérulea — Tous droits réservés. Site de démonstration, produits fictifs.</p>
 </footer>
+
+<div class="cart-overlay" data-cart-overlay hidden></div>
+<aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+  <div class="cart-drawer-header">
+    <h2>Votre panier</h2>
+    <button type="button" class="cart-drawer-close" data-cart-close aria-label="Fermer le panier">&times;</button>
+  </div>
+  <div class="cart-drawer-body" data-cart-body></div>
+  <div class="cart-drawer-footer" data-cart-footer hidden>
+    <div class="cart-drawer-subtotal">
+      <span>Sous-total</span>
+      <span data-cart-subtotal>0,00&nbsp;€</span>
+    </div>
+    <button type="button" class="btn btn--primary btn--block" disabled>Commander</button>
+    <p class="cart-drawer-note">Site de démonstration — le paiement n'est pas disponible.</p>
+  </div>
+</aside>
 
 <script src="../js/main.js"></script>
 <script src="../js/products.js"></script>
