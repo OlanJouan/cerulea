@@ -48,7 +48,7 @@
       <a href="#" class="header-action">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         Panier
-        <span class="header-action-badge">0</span>
+        <span class="header-action-badge" data-cart-count>0</span>
       </a>
     </nav>
   </div>
@@ -133,7 +133,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=ampoules-sommeil-profond">Ampoules Sommeil Profond</a></h3>
             <div class="product-card-prices"><span class="price-current">22,90&nbsp;€</span><span class="price-old">26,90&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="ampoules-sommeil-profond">Ajouter au panier</button>
         </article>
 
         <article class="product-card" style="width:auto;">
@@ -146,7 +146,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=tisane-nuit-calme">Tisane Nuit Calme</a></h3>
             <div class="product-card-prices"><span class="price-current">12,50&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="tisane-nuit-calme">Ajouter au panier</button>
         </article>
 
         <article class="product-card" style="width:auto;">
@@ -160,7 +160,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=duo-sommeil-detente">Duo Sommeil &amp; Détente</a></h3>
             <div class="product-card-prices"><span class="price-current">36,90&nbsp;€</span><span class="price-old">42,90&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="duo-sommeil-detente">Ajouter au panier</button>
         </article>
 
         <article class="product-card" style="width:auto;">
@@ -173,7 +173,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=gelules-memoire-claire">Gélules Mémoire Claire</a></h3>
             <div class="product-card-prices"><span class="price-current">19,90&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="gelules-memoire-claire">Ajouter au panier</button>
         </article>
 
         <article class="product-card" style="width:auto;">
@@ -187,7 +187,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=concentre-drainage-marin">Concentré Drainage Marin</a></h3>
             <div class="product-card-prices"><span class="price-current">21,90&nbsp;€</span><span class="price-old">25,90&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="concentre-drainage-marin">Ajouter au panier</button>
         </article>
 
         <article class="product-card" style="width:auto;">
@@ -200,7 +200,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=gelules-articulations-profondeur">Gélules Articulations Profondeur</a></h3>
             <div class="product-card-prices"><span class="price-current">26,90&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="gelules-articulations-profondeur">Ajouter au panier</button>
         </article>
 
         <article class="product-card" style="width:auto;">
@@ -213,7 +213,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=sels-bain-detox-minerale">Sels de Bain Détox Minérale</a></h3>
             <div class="product-card-prices"><span class="price-current">15,90&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="sels-bain-detox-minerale">Ajouter au panier</button>
         </article>
 
         <article class="product-card" style="width:auto;">
@@ -227,7 +227,7 @@
             <h3 class="product-card-title"><a href="produit.html?id=huile-peau-eclat-marin">Huile Peau Éclat Marin</a></h3>
             <div class="product-card-prices"><span class="price-current">29,90&nbsp;€</span><span class="price-old">34,90&nbsp;€</span></div>
           </div>
-          <button class="btn btn--outline-blue btn--sm btn--block product-card-add">Ajouter au panier</button>
+          <button class="btn btn--outline-blue btn--sm btn--block product-card-add" data-product-id="huile-peau-eclat-marin">Ajouter au panier</button>
         </article>
 
       </div>
@@ -294,6 +294,7 @@
 <script src="../js/main.js"></script>
 <script src="../js/mega-menu.js"></script>
 <script src="../js/wishlist.js"></script>
+<script src="../js/cart.js"></script>
 <script>
   const params = new URLSearchParams(window.location.search);
   const cat = params.get("cat") || "sélection";

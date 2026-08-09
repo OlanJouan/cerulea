@@ -58,7 +58,7 @@
       <a href="#" class="header-action">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         Panier
-        <span class="header-action-badge">0</span>
+        <span class="header-action-badge" data-cart-count>0</span>
       </a>
     </nav>
   </div>
@@ -99,7 +99,7 @@
         <li>Cure conseillée de 20 jours</li>
       </ul>
       <div style="display:flex; gap: var(--space-2);">
-        <button class="btn btn--primary">Ajouter au panier</button>
+        <button class="btn btn--primary product-card-add" data-product-id="ampoules-sommeil-profond">Ajouter au panier</button>
         <button class="wishlist-btn" style="position:static; background: var(--c-section-accent);" data-product-id="ampoules-sommeil-profond" aria-label="Ajouter à la liste de souhaits" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
       </div>
     </div>
@@ -154,6 +154,7 @@
 
 <script src="../js/main.js"></script>
 <script src="../js/wishlist.js"></script>
+<script src="../js/cart.js"></script>
 <script>
   const catalog = {
     "ampoules-sommeil-profond": { name: "Ampoules Sommeil Profond", cat: "Sommeil", price: "22,90 €", old: "26,90 €", img: "https://loremflickr.com/700/700/serum?lock=101" },
@@ -185,6 +186,7 @@
     if (oldEl && !product.old) oldEl.style.display = "none";
     document.getElementById("product-image").src = product.img;
     document.querySelector(".wishlist-btn[data-product-id]").setAttribute("data-product-id", id);
+    document.querySelector(".product-card-add[data-product-id]").setAttribute("data-product-id", id);
   }
 </script>
 </body>
