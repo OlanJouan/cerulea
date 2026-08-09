@@ -825,8 +825,11 @@
         </div>
         <div>
           <form class="newsletter-form" data-newsletter-form>
+            <input type="hidden" name="access_key" value="d5e40b26-a71e-431a-a617-244af5ef81bb">
+            <input type="hidden" name="subject" value="Nouvelle inscription newsletter — Cérulea (site de démonstration)">
+            <input type="hidden" name="from_name" value="Newsletter Cérulea">
             <label for="newsletter-email" class="visually-hidden">Adresse e-mail</label>
-            <input id="newsletter-email" type="email" required placeholder="Votre adresse e-mail">
+            <input id="newsletter-email" name="email" type="email" required placeholder="Votre adresse e-mail">
             <button type="submit" class="btn btn--outline">Je m'inscris</button>
           </form>
           <p class="newsletter-note">En vous inscrivant, vous acceptez de recevoir nos e-mails. Désinscription possible à tout moment.</p>
@@ -943,10 +946,12 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/products.js"></script>
 <script src="js/mega-menu.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/wishlist.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/search.js"></script>
 <script src="js/newsletter.js"></script>
 </body>
 </html>
