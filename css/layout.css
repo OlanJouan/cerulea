@@ -33,6 +33,9 @@
   padding-bottom: var(--space-2);
   scrollbar-width: thin;
   scrollbar-color: var(--c-secondary) var(--c-bg-alt);
+  /* Estompe la carte suivante coupée en bord de piste plutôt que de la trancher net */
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 110px), transparent 100%);
+  mask-image: linear-gradient(to right, black calc(100% - 110px), transparent 100%);
 }
 
 .carousel-track::-webkit-scrollbar {
