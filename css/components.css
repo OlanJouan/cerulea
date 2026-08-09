@@ -324,7 +324,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(6, 40, 66, 0.75), rgba(11, 79, 138, 0.35));
+  background: linear-gradient(120deg, rgba(35, 50, 74, 0.75), rgba(35, 90, 147, 0.35));
   z-index: 1;
 }
 
@@ -615,7 +615,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(6, 40, 66, 0.82), rgba(6, 40, 66, 0.05) 60%);
+  background: linear-gradient(0deg, rgba(35, 50, 74, 0.82), rgba(35, 50, 74, 0.05) 60%);
 }
 
 .solution-card-body {
