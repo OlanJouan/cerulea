@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirmation de commande — CÉRULEA</title>
+<meta name="description" content="Confirmation de votre commande et de votre paiement Cérulea.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<style>
+  .confirm-wrap { max-width: 640px; margin: 0 auto; padding: var(--space-6) 0; text-align: center; }
+  .confirm-icon { width: 64px; height: 64px; margin: 0 auto var(--space-4); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .confirm-icon.success { background: #E4F2E6; color: #2F7D42; }
+  .confirm-icon.pending { background: #FFF3DC; color: #B3811F; }
+  .confirm-icon.error { background: #FBE4DC; color: #B3441F; }
+  .confirm-recap { text-align: left; background: var(--c-section-accent); border-radius: var(--radius-md); padding: var(--space-4); margin-top: var(--space-5); }
+  .confirm-recap h2 { margin-bottom: var(--space-3); }
+  .confirm-recap-row { display: flex; justify-content: space-between; padding: 0.35em 0; border-bottom: 1px solid var(--c-border); font-size: 0.92rem; }
+  .confirm-recap-row.total { font-weight: 700; font-size: 1.05rem; border-bottom: none; padding-top: 0.6em; }
+  .confirm-address { margin-top: var(--space-3); font-size: 0.9rem; color: var(--c-text-muted); }
+  .confirm-actions { margin-top: var(--space-5); display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">Cérulea</span>
+      <span class="logo-baseline">Bien-être marin</span>
+    </a>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="container confirm-wrap" data-confirm-root>
+    <p>Vérification du paiement…</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <div class="footer-legal">
+      <a href="cgv.html">CGV</a>
+      <a href="cgu.html">CGU</a>
+      <a href="cookies.html">Gestion des cookies</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+  <p class="footer-copyright">© <span data-year></span> Cérulea — Tous droits réservés. Site de démonstration, produits fictifs.</p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+(() => {
+  const CART_KEY = "cerulea-cart";
+  const WEB3FORMS_ACCESS_KEY = "d5e40b26-a71e-431a-a617-244af5ef81bb";
+  const formatPrice = (value) => Number(value).toFixed(2).replace(".", ",") + " €";
+  const root = document.querySelector("[data-confirm-root]");
+
+  const clearCartBadge = () => {
+    document.querySelectorAll("[data-cart-count]").forEach((el) => {
+      el.textContent = "0";
+      el.style.display = "none";
+    });
+  };
+
+  const renderPending = () => {
+    root.innerHTML = `
+      <div class="confirm-icon pending">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </div>
+      <h1>Paiement en cours de traitement…</h1>
+      <p>Merci de patienter quelques instants, ne fermez pas cette page.</p>`;
+  };
+
+  const renderError = (message) => {
+    root.innerHTML = `
+      <div class="confirm-icon error">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+      </div>
+      <h1>Le paiement n'a pas abouti</h1>
+      <p>${message}</p>
+      <div class="confirm-actions">
+        <a href="commande.html" class="btn btn--primary">Réessayer le paiement</a>
+        <a href="contact.html" class="btn btn--outline-blue">Contacter le service client</a>
+      </div>`;
+  };
+
+  const renderNoOrder = () => {
+    root.innerHTML = `
+      <h1>Aucune commande en attente</h1>
+      <p>Si vous venez d'effectuer un paiement, vérifiez votre boîte e-mail. Sinon, contactez-nous en cas de doute.</p>
+      <div class="confirm-actions">
+        <a href="../index.html" class="btn btn--primary">Retour à la boutique</a>
+        <a href="contact.html" class="btn btn--outline-blue">Nous contacter</a>
+      </div>`;
+  };
+
+  const notifyOwner = (pending) => {
+    const notifiedKey = `cerulea-notified-${pending.id}`;
+    if (localStorage.getItem(notifiedKey)) return;
+
+    const { order, customer, reference } = pending;
+    const itemsText = order.lines
+      .map((l) => `- ${l.name} × ${l.qty} = ${formatPrice(l.lineTotal)}`)
+      .join("\n");
+    const message = [
+      `Commande CÉRULEA — réf. ${reference}`,
+      "",
+      "Articles :",
+      itemsText,
+      "",
+      `Sous-total : ${formatPrice(order.subtotal)}`,
+      `Livraison : ${order.shipping === 0 ? "Offerte" : formatPrice(order.shipping)}`,
+      `Total payé : ${formatPrice(order.total)}`,
+      "",
+      "Adresse de livraison :",
+      `${customer.firstName} ${customer.lastName}`,
+      customer.address,
+      customer.addressComplement || "",
+      `${customer.zip} ${customer.city}`,
+      customer.phone ? `Tél. : ${customer.phone}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const body = new FormData();
+    body.append("access_key", WEB3FORMS_ACCESS_KEY);
+    body.append("subject", `Nouvelle commande CÉRULEA — ${reference.slice(0, 8)}`);
+    body.append("from_name", "Commandes Cérulea (site de démonstration)");
+    body.append("name", `${customer.firstName} ${customer.lastName}`);
+    body.append("email", customer.email);
+    body.append("message", message);
+
+    fetch("https://api.web3forms.com/submit", { method: "POST", headers: { Accept: "application/json" }, body })
+      .then(() => localStorage.setItem(notifiedKey, "1"))
+      .catch(() => {});
+  };
+
+  const renderSuccess = (pending) => {
+    const { order, customer, reference } = pending;
+    localStorage.setItem(CART_KEY, "{}");
+    clearCartBadge();
+    notifyOwner(pending);
+
+    root.innerHTML = `
+      <div class="confirm-icon success">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h1>Merci ${customer.firstName} ! Votre commande est confirmée.</h1>
+      <p>Référence : ${reference.slice(0, 8).toUpperCase()} — un e-mail de confirmation vous sera envoyé prochainement.</p>
+      <div class="confirm-recap">
+        <h2 class="section-title">Récapitulatif</h2>
+        ${order.lines.map((l) => `<div class="confirm-recap-row"><span>${l.name} × ${l.qty}</span><span>${formatPrice(l.lineTotal)}</span></div>`).join("")}
+        <div class="confirm-recap-row"><span>Livraison</span><span>${order.shipping === 0 ? "Offerte" : formatPrice(order.shipping)}</span></div>
+        <div class="confirm-recap-row total"><span>Total</span><span>${formatPrice(order.total)}</span></div>
+        <p class="confirm-address">
+          Livraison à : ${customer.firstName} ${customer.lastName}, ${customer.address}${customer.addressComplement ? ", " + customer.addressComplement : ""}, ${customer.zip} ${customer.city}
+        </p>
+      </div>
+      <div class="confirm-actions">
+        <a href="../index.html" class="btn btn--primary">Retour à la boutique</a>
+      </div>`;
+    sessionStorage.removeItem("cerulea-pending-order");
+  };
+
+  const verify = (pending, attempt) => {
+    fetch(`/api/verify-checkout?id=${encodeURIComponent(pending.id)}`)
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok) {
+          renderError(data.error || "Impossible de vérifier le paiement.");
+          return;
+        }
+        if (data.status === "PAID") {
+          renderSuccess(pending);
+        } else if (data.status === "PENDING" && attempt < 5) {
+          renderPending();
+          setTimeout(() => verify(pending, attempt + 1), 2000);
+        } else if (data.status === "PENDING") {
+          renderError("Le paiement met plus de temps que prévu à être confirmé. Si le montant a été débité, contactez-nous avec votre référence.");
+        } else {
+          renderError("Le paiement a été refusé ou annulé. Aucun montant n'a été débité pour cette tentative.");
+        }
+      })
+      .catch(() => renderError("Impossible de vérifier le paiement pour le moment. Réessayez dans un instant."));
+  };
+
+  let pending = null;
+  try {
+    pending = JSON.parse(sessionStorage.getItem("cerulea-pending-order"));
+  } catch {
+    pending = null;
+  }
+
+  if (!pending || !pending.id) {
+    renderNoOrder();
+  } else {
+    renderPending();
+    verify(pending, 0);
+  }
+})();
+</script>
+</body>
+</html>
