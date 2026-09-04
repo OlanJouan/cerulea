@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande — CÉRULEA</title>
+<meta name="description" content="Finalisez votre commande Cérulea et payez en ligne en toute sécurité.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<style>
+  .checkout-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-6); align-items: start; padding: var(--space-6) 0; }
+  .checkout-form { display: flex; flex-direction: column; gap: var(--space-3); }
+  .checkout-form fieldset { border: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .checkout-form legend { font-weight: 700; padding: 0 0 var(--space-2); }
+  .checkout-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .checkout-form input { width: 100%; padding: 0.8em 1em; border-radius: var(--radius-sm); border: 1.5px solid var(--c-border); font: inherit; }
+  .checkout-form input:focus { outline: 2px solid var(--c-primary); outline-offset: 1px; }
+  .checkout-summary { background: var(--c-section-accent); border-radius: var(--radius-md); padding: var(--space-4); position: sticky; top: var(--space-4); }
+  .checkout-summary h2 { margin-bottom: var(--space-3); }
+  .checkout-line { display: flex; gap: var(--space-3); align-items: center; padding: var(--space-2) 0; border-bottom: 1px solid var(--c-border); }
+  .checkout-line img { width: 52px; height: 52px; border-radius: var(--radius-sm); object-fit: cover; flex-shrink: 0; }
+  .checkout-line-info { flex: 1; display: flex; flex-direction: column; }
+  .checkout-line-name { font-weight: 600; font-size: 0.92rem; }
+  .checkout-line-qty { color: var(--c-text-muted); font-size: 0.85rem; }
+  .checkout-totals { padding-top: var(--space-3); display: flex; flex-direction: column; gap: 0.4em; }
+  .checkout-totals-row { display: flex; justify-content: space-between; font-size: 0.95rem; }
+  .checkout-totals-row.total { font-weight: 700; font-size: 1.15rem; padding-top: 0.5em; border-top: 1px solid var(--c-border); }
+  .checkout-empty { text-align: center; padding: var(--space-6) 0; }
+  .checkout-error { color: #B3441F; font-size: 0.9rem; }
+  .checkout-secure-note { display: flex; align-items: center; gap: 0.5em; font-size: 0.85rem; color: var(--c-text-muted); margin-top: var(--space-3); }
+  @media (max-width: 760px) { .checkout-grid { grid-template-columns: 1fr; } .checkout-form-row { grid-template-columns: 1fr; } .checkout-summary { position: static; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<div class="announcement-bar">
+  <div class="announcement-track">
+    <span class="announcement-item">Livraison offerte en point relais dès 40 €</span>
+    <span class="announcement-item" aria-hidden="true">Livraison offerte en point relais dès 40 €</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <button class="header-burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">Cérulea</span>
+      <span class="logo-baseline">Bien-être marin</span>
+    </a>
+    <div class="header-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" placeholder="Rechercher un produit, un besoin…" aria-label="Rechercher">
+    </div>
+    <nav class="header-actions" aria-label="Compte et panier">
+      <a href="contact.html" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Compte
+      </a>
+      <a href="#" class="header-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        Souhaits
+        <span class="header-action-badge" data-wishlist-count>0</span>
+      </a>
+      <button type="button" class="header-action" data-cart-toggle>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Panier
+        <span class="header-action-badge" data-cart-count>0</span>
+      </button>
+    </nav>
+  </div>
+  <nav class="main-nav" aria-label="Navigation principale">
+    <div class="container">
+      <ul class="main-nav-list">
+        <li class="main-nav-item"><a href="categorie.html?cat=complements" class="main-nav-link">Nos produits</a></li>
+        <li class="main-nav-item"><a href="categorie.html?cat=offres" class="main-nav-link">Offres</a></li>
+        <li class="main-nav-item"><a href="blog.html" class="main-nav-link">Nos conseils</a></li>
+        <li class="main-nav-item"><a href="contact.html" class="main-nav-link">Qui sommes-nous&nbsp;?</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="contenu">
+  <nav class="breadcrumb container" aria-label="Fil d'ariane">
+    <a href="../index.html">Accueil</a> / <span>Commande</span>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Finaliser ma commande</h1>
+      <p>Renseignez vos coordonnées de livraison, puis payez en toute sécurité.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" data-checkout-empty hidden>
+      <div class="checkout-empty">
+        <p>Votre panier est vide.</p>
+        <a href="categorie.html?cat=nouveautes" class="btn btn--outline-blue">Découvrir nos produits</a>
+      </div>
+    </div>
+
+    <div class="container checkout-grid" data-checkout-content hidden>
+      <div>
+        <h2 class="section-title" style="margin-bottom: var(--space-4);">Vos coordonnées</h2>
+        <form class="checkout-form" data-checkout-form novalidate>
+          <fieldset>
+            <legend>Contact</legend>
+            <div class="checkout-form-row">
+              <div>
+                <label for="co-firstname" class="visually-hidden">Prénom</label>
+                <input id="co-firstname" name="firstName" type="text" placeholder="Prénom" autocomplete="given-name" required>
+              </div>
+              <div>
+                <label for="co-lastname" class="visually-hidden">Nom</label>
+                <input id="co-lastname" name="lastName" type="text" placeholder="Nom" autocomplete="family-name" required>
+              </div>
+            </div>
+            <label for="co-email" class="visually-hidden">E-mail</label>
+            <input id="co-email" name="email" type="email" placeholder="Votre e-mail" autocomplete="email" required>
+            <label for="co-phone" class="visually-hidden">Téléphone</label>
+            <input id="co-phone" name="phone" type="tel" placeholder="Téléphone (optionnel)" autocomplete="tel">
+          </fieldset>
+
+          <fieldset>
+            <legend>Adresse de livraison</legend>
+            <label for="co-address" class="visually-hidden">Adresse</label>
+            <input id="co-address" name="address" type="text" placeholder="Adresse" autocomplete="address-line1" required>
+            <label for="co-address2" class="visually-hidden">Complément d'adresse</label>
+            <input id="co-address2" name="addressComplement" type="text" placeholder="Complément d'adresse (optionnel)" autocomplete="address-line2">
+            <div class="checkout-form-row">
+              <div>
+                <label for="co-zip" class="visually-hidden">Code postal</label>
+                <input id="co-zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{4,10}" placeholder="Code postal" autocomplete="postal-code" required>
+              </div>
+              <div>
+                <label for="co-city" class="visually-hidden">Ville</label>
+                <input id="co-city" name="city" type="text" placeholder="Ville" autocomplete="address-level2" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <p class="checkout-error" data-checkout-error hidden></p>
+          <button type="submit" class="btn btn--primary btn--block" data-checkout-submit>Payer maintenant</button>
+          <p class="checkout-secure-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Paiement sécurisé par carte bancaire, via SumUp.
+          </p>
+        </form>
+      </div>
+
+      <div class="checkout-summary">
+        <h2 class="section-title">Récapitulatif</h2>
+        <div data-checkout-lines></div>
+        <div class="checkout-totals">
+          <div class="checkout-totals-row"><span>Sous-total</span><span data-checkout-subtotal>0,00&nbsp;€</span></div>
+          <div class="checkout-totals-row"><span>Livraison</span><span data-checkout-shipping>0,00&nbsp;€</span></div>
+          <div class="checkout-totals-row total"><span>Total</span><span data-checkout-total>0,00&nbsp;€</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <div class="footer-legal">
+      <a href="cgv.html">CGV</a>
+      <a href="cgu.html">CGU</a>
+      <a href="cookies.html">Gestion des cookies</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </div>
+  <p class="footer-copyright">© <span data-year></span> Cérulea — Tous droits réservés. Site de démonstration, produits fictifs.</p>
+</footer>
+
+<div class="cart-overlay" data-cart-overlay hidden></div>
+<aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+  <div class="cart-drawer-header">
+    <h2>Votre panier</h2>
+    <button type="button" class="cart-drawer-close" data-cart-close aria-label="Fermer le panier">&times;</button>
+  </div>
+  <div class="cart-drawer-body" data-cart-body></div>
+  <div class="cart-drawer-footer" data-cart-footer hidden>
+    <div class="cart-drawer-subtotal">
+      <span>Sous-total</span>
+      <span data-cart-subtotal>0,00&nbsp;€</span>
+    </div>
+    <a href="commande.html" class="btn btn--primary btn--block">Commander</a>
+  </div>
+</aside>
+
+<script src="../js/main.js"></script>
+<script src="../js/products.js"></script>
+<script src="../js/wishlist.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/search.js"></script>
+<script>
+(() => {
+  const STORAGE_KEY = "cerulea-cart";
+  const FREE_SHIPPING_THRESHOLD = 40;
+  const SHIPPING_FEE = 4.9;
+
+  const getCart = () => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch {
+      return {};
+    }
+  };
+
+  const formatPrice = (value) => value.toFixed(2).replace(".", ",") + " €";
+
+  const cart = getCart();
+  const ids = Object.keys(cart);
+  const emptyEl = document.querySelector("[data-checkout-empty]");
+  const contentEl = document.querySelector("[data-checkout-content]");
+
+  if (ids.length === 0) {
+    emptyEl.hidden = false;
+    return;
+  }
+  contentEl.hidden = false;
+
+  const lines = ids
+    .map((id) => {
+      const product = CERULEA_PRODUCTS[id];
+      if (!product) return null;
+      const unitPrice = parseFloat(String(product.price).replace(/[^\d,.-]/g, "").replace(",", ".")) || 0;
+      const qty = cart[id];
+      return { id, name: product.name, img: product.img, qty, lineTotal: unitPrice * qty };
+    })
+    .filter(Boolean);
+
+  const subtotal = lines.reduce((sum, l) => sum + l.lineTotal, 0);
+  const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+  const total = subtotal + shipping;
+
+  document.querySelector("[data-checkout-lines]").innerHTML = lines
+    .map(
+      (l) => `
+        <div class="checkout-line">
+          <img src="${l.img}" alt="" loading="lazy">
+          <div class="checkout-line-info">
+            <span class="checkout-line-name">${l.name}</span>
+            <span class="checkout-line-qty">Qté ${l.qty} · ${formatPrice(l.lineTotal)}</span>
+          </div>
+        </div>`
+    )
+    .join("");
+
+  document.querySelector("[data-checkout-subtotal]").textContent = formatPrice(subtotal);
+  document.querySelector("[data-checkout-shipping]").textContent = shipping === 0 ? "Offerte" : formatPrice(shipping);
+  document.querySelector("[data-checkout-total]").textContent = formatPrice(total);
+
+  const form = document.querySelector("[data-checkout-form]");
+  const errorEl = document.querySelector("[data-checkout-error]");
+  const submitBtn = document.querySelector("[data-checkout-submit]");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Redirection vers le paiement…";
+
+    const formData = new FormData(form);
+    const customer = Object.fromEntries(formData.entries());
+    const items = lines.map((l) => ({ id: l.id, qty: l.qty }));
+
+    try {
+      const res = await fetch("/api/create-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items, customer }),
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.hostedCheckoutUrl) {
+        throw new Error(data.error || "Le paiement n'a pas pu être initié.");
+      }
+
+      sessionStorage.setItem(
+        "cerulea-pending-order",
+        JSON.stringify({ id: data.id, reference: data.reference, order: data.order, customer: data.customer })
+      );
+      window.location.href = data.hostedCheckoutUrl;
+    } catch (err) {
+      errorEl.textContent = err.message || "Une erreur est survenue. Réessayez.";
+      errorEl.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Payer maintenant";
+    }
+  });
+})();
+</script>
+</body>
+</html>
